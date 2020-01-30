@@ -2,3 +2,16 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
+
+.food{
+	width:100%;
+}
+
+.uniform{
+	height:250px;
+	overflow: hidden;
+}
+
+.icolor{
+	color:red;
+}
