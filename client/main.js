@@ -27,12 +27,25 @@ Template.myGallery.events({
    // console.log("deleting...");
    var myId	= this._id;
    $("#"+this._id).fadeOut('slow',function(){
-   imagesdb.remove({_id:myId});
+   //imagesdb.remove({_id:myId});
    console.log(myId);  
    // imagesdb.remove(this._id) 
 });
 
   },
+  'click .js-edit'(event, instance) {
+   $("#editImageModal").modal("show");
+   var myId = this._id;
+   console.log("Let's Edit " +  myId);
+   var eTitle = imagesdb.findOne({_id:myId}).title;
+   var ePath = imagesdb.findOne({_id:myId}).path;
+   var eDesc = imagesdb.findOne({_id:myId}).desc;
+   $("#edTitle").val(eTitle);
+   $("#edPath").val(ePath);
+   $("#edDesc").val(eDesc);
+   $(".eholder").attr("src", ePath)
+
+  }
 
 });
 
@@ -62,6 +75,30 @@ Template.Addimage.events({
 	  	$("#Title").val("");
 	  	$("#Path").val("");
 	  	$("#Desc").val("");
-  	}
+	  	$(".imgholder").attr("src","imgplaceholder.png");
+  	},
+  	'input #Path'(event,instance){
+  		$(".imgholder").attr("src",$("#Path").val());
+  		console.log($("#Path").val()); 	
+	},
 });
+
+
+Template.editimage.events({
+	'click .js-addMe'(event,instance){
+		var newTitle = $("#edTitle").val();
+		var newPath = $("#edPath").val();
+		var newDesc = $("#edDesc").val();
+		var updateId = $("#edID").val();
+		imagesdb.update({_id: updateId},
+			{$set:{
+				"title":newTitle,
+				"path":newPath,
+				"desc":newDesc
+			}}
+		);
+	},
+	//console.log("adding image...")
+})
+
 

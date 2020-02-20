@@ -14,4 +14,21 @@ body {
 
 .icolor{
 	color:red;
+	font-size: 2em;
+}
+.ecolor{
+	color:blue;
+	font-size: 2em;
+}
+
+.imgholder{
+	margin-bottom: 10px;
+	height: 200px;
+}
+.dcolor, .ecolor{
+	font-size: 2em;
+	cursor: pointer;
+}
+.eholder{
+	height:250px;
 }
