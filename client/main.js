@@ -15,7 +15,7 @@ import '../lib/collection.js';
 //});
 
 Template.myGallery.helpers({
- allImages(){
+ 'allImages'(){
  	return imagesdb.find();
  }
 });
