@@ -24,15 +24,16 @@ Template.myGallery.helpers({
 
 Template.myGallery.events({
   'click .js-delete'(event, instance) {
-   // console.log("deleting...");
-   var myId	= this._id;
-   $("#"+this._id).fadeOut('slow',function(){
-   //imagesdb.remove({_id:myId});
-   console.log(myId);  
-   // imagesdb.remove(this._id) 
-});
+	   // console.log("deleting...");
+	   var myId	= this._id;
+	   $("#delID").val(myId);
+	   $("#confirmModal").modal("show");
+	    // $("#"+this._id).fadeOut('slow',function(){
+	   //imagesdb.remove({_id:myId});
+	   // console.log(myId);  
+	   // imagesdb.remove(this._id) 
+	},
 
-  },
   'click .js-edit'(event, instance) {
    $("#editImageModal").modal("show");
    var myId = this._id;
@@ -40,13 +41,20 @@ Template.myGallery.events({
    var eTitle = imagesdb.findOne({_id:myId}).title;
    var ePath = imagesdb.findOne({_id:myId}).path;
    var eDesc = imagesdb.findOne({_id:myId}).desc;
+   $("edID").val(myId);
    $("#edTitle").val(eTitle);
    $("#edPath").val(ePath);
    $("#edDesc").val(eDesc);
-   $(".eholder").attr("src", ePath)
+   $(".eholder").attr("src", ePath);
 
-  }
-
+  },
+  'click .js-confirm'(event,instance){
+  	var myId =$("#delID").val();
+  	$("#"+myId).fadeOut('slow',function(){
+  		imagesdb.remove({_id:myId});
+  		console.log(myId);
+  	});
+  },
 });
 
 Template.Addimage.events({
@@ -90,6 +98,7 @@ Template.editimage.events({
 		var newPath = $("#edPath").val();
 		var newDesc = $("#edDesc").val();
 		var updateId = $("#edID").val();
+		console.log(newTitle);
 		imagesdb.update({_id: updateId},
 			{$set:{
 				"title":newTitle,
@@ -98,7 +107,9 @@ Template.editimage.events({
 			}}
 		);
 	},
+		// 'input #edPath'(event,instance){
+  		// $(".imgholder").attr("src",$("#edPath").val());
 	//console.log("adding image...")
-})
+});
 
 
