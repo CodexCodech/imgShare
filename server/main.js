@@ -10,7 +10,8 @@ if (imagesdb.find().count()<1){
   	imagesdb.insert({
   		"path":"img_"+i+".jpg",
   		"title":"title" +i,
-  		"desc" :"description" +i
+  		"desc" :"description" +i,
+      "createdOn": new Date().getTime()
   	});
   }
   }
