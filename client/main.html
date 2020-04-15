@@ -6,8 +6,17 @@
   <div class="container">
 
     <h1 class="display-4 text center"> Welcome to Image Share GALLERY </h1>
-    {{>Addimage}} 
-    {{>editimage}}
+    <div class="row my-5 justify-content-around">
+      <div class="col-3 text-center">
+        <div class="btn btn-info">
+          {{> loginButtons}}
+        </div>
+      </div>
+    </div>
+    {{#if currentUser}}
+      {{>Addimage}} 
+      {{>editimage}}
+    {{/if}}
     {{>myGallery}}
 
   </div> <!--Container-->
@@ -20,37 +29,42 @@
         <div class="uniform">
           <img src="{{path}}" class="food">
         </div>
+        {{#if currentUser}}
         <i class="fa fa-pencil ecolor js-edit"></i>
         <i class="fa fa-trash icolor js-delete"></i>
+        {{/if}}
         <h3>{{title}}</h3>
         <h3>{{desc}}</h3>
+        {{#if userField}}
+        <h3> by {{createdBy}}</h3>
+        {{/if}}
         {{> rating value=ratings picId=_id}}
       </div>
-      {{/each}}
+    {{/each}}
       <!-- ??? -->
          
-<!-- Modal -->
-<div class="modal fade" id="confirmModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">You want to Delete this?</h5>
-      </div>
-      <div class="modal-footer">
-        <input  id="delID" type="hidden">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-primary js-confirm" data-dismiss="modal">Yes</button>
+  <!-- Modal -->
+  <div class="modal fade" id="confirmModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">You want to Delete this?</h5>
+        </div>
+        <div class="modal-footer">
+          <input  id="delID" type="text">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary js-confirm" data-dismiss="modal">Yes</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-      <!-- ??? -->
+        <!-- ??? -->
   </div> <!--Row-->
 </template>
 
 <template name= "Addimage">
   <div class="row mb-5 justify-content-around">
-      <div class="col-3">
+      <div class="col-2 text-center">
         <button type="button" class="btn btn-primary js-addImage" data-toggle="modal" data-target="#addImageModal">
         Add an Image
         </button>
@@ -62,7 +76,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Search Image Path</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add Image Modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -104,7 +118,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Search Image Path</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Image Modal</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

@@ -5,10 +5,11 @@ body {
 
 .food{
 	width:100%;
+	height: 100%;
 }
 
 .uniform{
-	height:250px;
+	height:335px;
 	overflow: hidden;
 }
 
@@ -30,5 +31,9 @@ body {
 	cursor: pointer;
 }
 .eholder{
+	margin-bottom: 10px;
 	height:250px;
+}
+#login-buttons a{
+text-decoration: none;
 }

@@ -32,7 +32,7 @@ $(window).scroll(function(event){
 });
 
 Template.myGallery.helpers({
- 'allImages'(){
+ allImages(){
  	var prevTime = new Date().getTime() - 15000;
  	var results = imagesdb.find({createdOn: {$gte: prevTime}}).count();
  	if (results > 0){
@@ -41,6 +41,14 @@ Template.myGallery.helpers({
  		return imagesdb.find({}, {sort:{ratings: -1,  createdOn: -1}, limit: Session.get( "imageLimit")});
  	// return imagesdb.find({}, {sort:{ratings: -1}});
   },
+  userField(){
+  	if(!(this.createdBy == undefined)){
+  		return true;
+  	}
+  	else{
+  		return false;
+  	}
+  }
 });
 
 
@@ -63,7 +71,7 @@ Template.myGallery.events({
    console.log("Let's Edit " +  myId);
    var eTitle = imagesdb.findOne({_id:myId}).title;
    var ePath = imagesdb.findOne({_id:myId}).path;
-   var eDesc = imagesdb.findOne({_id:myId}).desc;
+   var eDesc = imagesdb.findOne({_id:myId}).tesc;
    $("edID").val(myId);
    $("#edTitle").val(eTitle);
    $("#edPath").val(ePath);
@@ -99,7 +107,7 @@ Template.Addimage.events({
 	},
 	'click .js-savechanges'(event,instance){
 	var theTitle =$("#Title").val();
-	console.log("Saving Title:"+theTitle);
+	console.log("Saving Title:" +theTitle);
 	var thePath =$("#Path").val();
 	console.log("Saving Path:" +thePath);
 	var theDesc =$("#Desc").val();
@@ -109,7 +117,8 @@ Template.Addimage.events({
   		"title": theTitle,
   		"path" : thePath,
   		"desc" : theDesc,
-  		"createdOn": new Date().getTime()
+  		"createdOn": new Date().getTime(),
+  		"createdBy": Meteor.users.findOne({_id:Meteor.userId()}).emails[0].address
   		});
 
 	  	console.log("saving..");
@@ -121,10 +130,10 @@ Template.Addimage.events({
   	},
   	'input #Path'(event,instance){
   		$(".imgholder").attr("src",$("#Path").val());
-  		console.log($("#Path").val()); 	
+  		console.log($("#Path").val());
+  		 	
 	},
 });
-
 
 Template.editimage.events({
 	'click .js-addMe'(event,instance){
@@ -137,7 +146,8 @@ Template.editimage.events({
 			{$set:{
 				"title":newTitle,
 				"path":newPath,
-				"desc":newDesc
+				"desc":newDesc,
+
 			}}
 		);
 	},
