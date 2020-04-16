@@ -16,3 +16,9 @@ if (imagesdb.find().count()<1){
     }
   }
 });
+
+Meteor.publish('ImageGallery', function () {
+  return imagesdb.find({}, {
+    
+  });
+});

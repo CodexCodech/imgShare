@@ -10,10 +10,9 @@ global.Popper = popper // fixes some issues with Popper and Meteor
 import './main.html';
 import '../lib/collection.js';
 
-//Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-//  this.counter = new ReactiveVar(0);
-//});
+Meteor.subscribe('ImageGallery');
+
+
 
 Session.set("imageLimit", 9);
 lastScrollTop = 0;
@@ -59,10 +58,6 @@ Template.myGallery.events({
 	   var myId	= this._id;
 	   $("#delID").val(myId);
 	   $("#confirmModal").modal("show");
-	    // $("#"+this._id).fadeOut('slow',function(){
-	   //imagesdb.remove({_id:myId});
-	   // console.log(myId);  
-	   // imagesdb.remove(this._id) 
 	},
 
   'click .js-edit'(event, instance) {
@@ -118,7 +113,8 @@ Template.Addimage.events({
   		"path" : thePath,
   		"desc" : theDesc,
   		"createdOn": new Date().getTime(),
-  		"createdBy": Meteor.users.findOne({_id:Meteor.userId()}).emails[0].address
+  		"createdBy": Meteor.users.findOne({_id:Meteor.userId()}).emails[0].address,
+  		"createdById": Meteor.userId()
   		});
 
 	  	console.log("saving..");
@@ -141,7 +137,8 @@ Template.editimage.events({
 		var newPath = $("#edPath").val();
 		var newDesc = $("#edDesc").val();
 		var updateId = $("#edID").val();
-		console.log(newTitle);
+		console.log(` updating ${updateId} Image with Title ${newTitle} and 
+		path is ${newPath} and its description ${newDesc}`);
 		imagesdb.update({_id: updateId},
 			{$set:{
 				"title":newTitle,
@@ -151,9 +148,9 @@ Template.editimage.events({
 			}}
 		);
 	},
-		// 'input #edPath'(event,instance){
-  		// $(".imgholder").attr("src",$("#edPath").val());
-	//console.log("adding image...")
+		'input #edPath'(event,instance){
+  		$(".imgholder").attr("src",$("#edPath").val());
+  	}
 });
 
 
