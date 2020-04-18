@@ -2,25 +2,30 @@ body {
   padding: 10px;
   font-family: sans-serif;
 }
-/*.bg{
-	background-image: url(../public/frederic-paulussen-NQiAT4D0qEM-unsplash.jpg);
-	background-position: center;
-  background-repeat: no-repeat;
+.bg{
+	background-image: url('rederic-paulussen-NQiAT4D0qEM-unsplash.jpg');
   background-size: cover;
-  background-position: static;
+}
 
-  height: 100%;
-  width: 100%;
-}*/
+.mybkcol{
+background: #ffffff44; /*rgba*/
+
+}
 
 .food{
-	width: 350px;
-	height: 400px;
+	width: 100%;
+	height: 100%;
+	transition: .3s linear;
+	cursor: pointer;
+}
+
+
+.food:hover{
+	transform: scale(1.1);
 }
 
 .uniform{
 	height:335px;
-	width: 410px;
 	overflow: hidden;
 }
 
@@ -45,6 +50,10 @@ body {
 	margin-bottom: 10px;
 	height:250px;
 }
-#login-buttons a{
-text-decoration: none;
+#login-dropdown-list{
+	list-style: none;
+}
+
+.rating > label{
+		cursor: pointer;
 }
