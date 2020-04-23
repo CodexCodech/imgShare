@@ -3,8 +3,12 @@ body {
   font-family: sans-serif;
 }
 .bg{
-	background-image: url('rederic-paulussen-NQiAT4D0qEM-unsplash.jpg');
-  background-size: cover;
+	background-image: url(https://images.unsplash.com/photo-1544436820-d96a51aafbc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60);
+    background-size: contain;
+}
+
+.txt{
+	color: #FFFFFF;
 }
 
 .mybkcol{

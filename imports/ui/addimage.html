@@ -1,0 +1,48 @@
+<template name= "Addimage">
+  <div class="row mb-5 justify-content-around">
+      <div class="col-2 text-center">
+        <button type="button" class="btn btn-primary js-addImage" data-toggle="modal" data-target="#addImageModal">
+        Add an Image
+        </button>
+      </div>
+  </div> <!--Closing row-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="addImageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Image Modal</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img class = "imgholder" src="imgplaceholder.png" alt="">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Title</span>
+            </div>
+            <input type="text" class="form-control" id="Title" placeholder="Provide a Title" aria-label="Provide a Title" aria-describedby="basic-addon1">
+          </div><!-- Title-->
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Path</span>
+            </div>
+            <input type="text" class="form-control" id="Path" placeholder="Provide an Image Path" aria-label="Provide an Image path" aria-describedby="basic-addon1">
+          </div><!-- Path-->
+              <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Description</span>
+                  </div>
+                  <textarea class="form-control" id="Desc" aria-label="Description"></textarea>
+                </div> <!--Description-->
+        </div> <!--Modal Body-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary js-closeTab" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary js-savechanges">Save changes</button>
+        </div> <!--Save changes and close-->
+      </div>
+    </div>
+  </div>
+</template>
