@@ -10,9 +10,13 @@ global.Popper = popper // fixes some issues with Popper and Meteor
 
 // ui templates
 import './layout.html';
+import './randomImg.html';
 import './myGallery.html';
 import './addimage.html';
 import './editimage.html';
+import './navbar.html';
+import './pager.html';
+
 
 
 
@@ -23,4 +27,6 @@ import '../api/infintescroll.js';
 import '../api/mygallery.js';
 import '../api/addimage.js';
 import '../api/editimage.js';
+import '../api/router.js';
+import '../api/random.js'
 

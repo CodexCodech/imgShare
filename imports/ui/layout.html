@@ -1,26 +1,17 @@
 <body class = "bg">
   <div class="container mybkcol">
-      <div class="row justify-content-around">
-        <div class="col-9 text-center">
-        <h1 class="display-4 txt"> Welcome to Image Share Gallery</h1>
-        </div>
-      </div>
-        <div class="row my-5 justify-content-around">
-          <div class="col-3 text-center">
-            <div class="btn btn-info">
-          {{> loginButtons}}
-        </div>
-      </div>
-    </div>
-    {{#if currentUser}}
-      {{>Addimage}} 
-      {{>editimage}}
-    {{/if}}
-    {{>myGallery}}
-
   </div> <!--Container-->
 </body>
 
 
+<template name="pageLayout">
+  {{> Template.dynamic template=top}}
+  {{> Template.dynamic template=main}}
+  {{> Template.dynamic template=footer}}
+</template>
 
-
+<!-- <template name="layout1">
+  {{> Template.dynamic template=top}}
+  {{> Template.dynamic template=main}}
+</template>
+ -->
