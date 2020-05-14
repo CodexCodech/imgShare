@@ -17,3 +17,12 @@ FlowRouter.route('/gallery', {
     console.log("the gallery of pictures");
   }
 });
+
+FlowRouter.route('*',  {
+  name: 'error404',
+  action(){
+    BlazeLayout.render("pageLayout", {mainBody: "error404"});
+    console.log("Nothing Found");
+  }
+});
+

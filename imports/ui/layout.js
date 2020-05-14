@@ -16,8 +16,7 @@ import './addimage.html';
 import './editimage.html';
 import './navbar.html';
 import './pager.html';
-
-
+import './error404.html';
 
 
 // api scripts

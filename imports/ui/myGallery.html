@@ -3,7 +3,9 @@
     {{#each allImages}}
       <div class="col-4" id={{_id}}>
         <div class="uniform">
+          <a href="/gallery/{{_id}}">
           <img src="{{path}}" class="food">
+          </a>
         </div>
         {{#if currentUser}}
         <i class="fa fa-pencil ecolor js-edit"></i>
